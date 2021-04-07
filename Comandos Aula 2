@@ -1,0 +1,146 @@
+**FILIAL-RJ**
+
+**RTR-1**
+
+enable 
+show ip int brief
+configure terminal
+int g0/0/0
+ip ospf 10 area 0
+int serial 0/1/0
+ip ospf 10 area 0
+end
+conf t 
+router ospf 10
+router-id 9.9.9.9
+end
+clear ip ospf process 
+yes
+conf t 
+router ospf 10
+router-id 1.1.1.1
+end
+clear ip ospf process 
+yes
+conf t 
+int g0/0/0
+ip ospf priority 2
+end
+clear ip ospf process
+yes
+conf t
+ip router 0.0.0.0 0.0.0.0 serial0/1/1
+end
+conf t
+router ospf 10
+default-information originate
+do wr
+
+
+RTR-2
+
+enable
+show ip int brief 
+configure terminal
+int g0/0/0
+ip ospf 10 area 0
+int g0/0/1
+ip ospf 10 area 0
+end
+conf t 
+router ospf 10
+router-id 8.8.8.8
+end
+clear ip ospf process 
+yes
+wr
+conf t
+route ospf 10
+passive-interface g0/0/0
+end
+wr
+
+
+RTR-3
+
+enable 
+show ip int brief
+configure terminal
+int g0/0/0
+ip ospf 10 area 0
+int g0/0/1
+ip ospf 10 area 0
+end
+conf t 
+router ospf 10
+router-id 7.7.7.7
+end
+clear ip ospf process 
+yes
+wr
+conf t
+route ospf 10
+passive-interface g0/0/0
+end
+wr
+
+
+MATRIZ-SP
+
+RTR-A
+
+enable 
+show ip int brief
+configure terminal
+router ospf 10
+network 10.10.0.0 0.0.0.255 area 0
+network 192.168.66.1 0.0.0.0 area 0
+end
+conf t
+route ospf 10
+passive-interface default
+no passive-interface ser0/1/0
+no passive-interface ser0/1/1
+no passive-interface ser0/2/1
+no passive-interface ser0/2/0
+end
+wr
+
+
+RTR-B
+
+enable 
+show ip int brief
+configure terminal
+router ospf 10
+network 0.0.0.0 255.255.255.255 area 0
+end
+conf t
+route ospf 10
+passive-interface g0/0/0
+end
+wr
+
+RTR-C
+
+enable 
+show ip int brief
+configure terminal
+router ospf 10
+network 0.0.0.0 255.255.255.255 area 0
+end
+conf t
+route ospf 10
+passive-interface g0/0/0
+passive-interface g0/0/1
+end
+wr
+
+
+COMANDOS COMPLEMENTARES:
+show ip ospf int g0/0/0
+show ip int brief
+show ip ospf neighbor
+show ip route
+show running-config
+wr
