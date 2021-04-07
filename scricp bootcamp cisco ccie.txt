@@ -1,6 +1,6 @@
-FILIAL-RJ
+**FILIAL-RJ
 
-RTR-1
+**RTR-1
 
 enable 
 show ip int brief
@@ -37,7 +37,7 @@ default-information originate
 do wr
 
 
-RTR-2
+**RTR-2
 
 enable
 show ip int brief 
@@ -61,7 +61,7 @@ end
 wr
 
 
-RTR-3
+**RTR-3**
 
 enable 
 show ip int brief
@@ -85,9 +85,9 @@ end
 wr
 
 
-MATRIZ-SP
+**MATRIZ-SP
 
-RTR-A
+**RTR-A
 
 enable 
 show ip int brief
@@ -107,7 +107,7 @@ end
 wr
 
 
-RTR-B
+**RTR-B
 
 enable 
 show ip int brief
@@ -121,7 +121,7 @@ passive-interface g0/0/0
 end
 wr
 
-RTR-C
+**RTR-C
 
 enable 
 show ip int brief
@@ -137,7 +137,7 @@ end
 wr
 
 
-COMANDOS COMPLEMENTARES:
+**COMANDOS COMPLEMENTARES:
 show ip ospf int g0/0/0
 show ip int brief
 show ip ospf neighbor
